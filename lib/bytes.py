@@ -1,3 +1,7 @@
+"""
+Note that this labels KB as 1024 bytes. Which should be KiB.
+"""
+
 from typing import Union
 
 
@@ -39,6 +43,24 @@ class Bytes:
 
     def __lt__(self, other: object) -> bool:
         return isinstance(other, Bytes) and self.value < other.value
+
+    def __add__(self, other: object) -> "Bytes":
+        if isinstance(other, Bytes):
+            return Bytes.from_bytes(self.value + other.value)
+        raise TypeError(
+            "Unsupported operand type for +: 'Bytes' and '{}'".format(
+                type(other).__name__
+            )
+        )
+
+    def __sub__(self, other: object) -> "Bytes":
+        if isinstance(other, Bytes):
+            return Bytes.from_bytes(self.value - other.value)
+        raise TypeError(
+            "Unsupported operand type for -: 'Bytes' and '{}'".format(
+                type(other).__name__
+            )
+        )
 
     @classmethod
     def from_bytes(cls, value: Union[int, float]) -> "Bytes":

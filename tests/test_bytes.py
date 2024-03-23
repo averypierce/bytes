@@ -105,8 +105,23 @@ def test_unit_equality():
     assert Gigabytes(1024) == Terabytes(1)
     assert Terabytes(1024) == Terabytes(1024)
 
+
 def test_unit_inequality():
     assert Bytes(1024) < Kilobytes(2)
     assert Kilobytes(1024) < Megabytes(2)
     assert Megabytes(1024) < Gigabytes(2)
     assert Gigabytes(1024) < Terabytes(2)
+
+
+def test_addition():
+    assert Bytes(1024) + Kilobytes(1) == Kilobytes(2)
+    assert Kilobytes(1024) + Megabytes(1) == Megabytes(2)
+    assert Megabytes(1024) + Gigabytes(1023) == Terabytes(1)
+    assert Gigabytes(1024) + Terabytes(1) == Terabytes(2)
+
+
+def test_subtraction():
+    assert Kilobytes(2) - Bytes(1024) == Bytes(1024)
+    assert Megabytes(1) - Kilobytes(1024) == Bytes(0)
+    assert Gigabytes(1) - Megabytes(1024) == Bytes(0)
+    assert Terabytes(1) - Gigabytes(1024) == Bytes(0)
