@@ -88,6 +88,14 @@ class Bytes:
     def tb(self):
         return Terabytes.from_bytes(self.value)
 
+    @property
+    def pb(self):
+        return Petabytes.from_bytes(self.value)
+
+    @property
+    def eb(self):
+        return Exabytes.from_bytes(self.value)
+
 
 class Kilobytes(Bytes):
     label = "KB"
@@ -107,3 +115,13 @@ class Gigabytes(Bytes):
 class Terabytes(Bytes):
     label = "TB"
     pow = 4
+
+
+class Petabytes(Bytes):
+    label = "PB"
+    pow = 5
+
+
+class Exabytes(Bytes):
+    label = "EB"
+    pow = 6
