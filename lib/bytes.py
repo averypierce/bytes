@@ -1,5 +1,6 @@
 from typing import Union
 
+
 def count_zeros_after_decimal(num: Union[int, float]) -> int:
     if num == 0:
         return 0
@@ -10,26 +11,28 @@ def count_zeros_after_decimal(num: Union[int, float]) -> int:
             count += 1
     return count
 
+
 def rounder(val: float, decimal_places: int = 3) -> float:
     if val > 1:
         return round(val)
     zero_count = count_zeros_after_decimal(val)
     return round(val, max(decimal_places, zero_count))
 
+
 class Bytes:
-    label = 'B'
+    label = "B"
     pow = 0
 
     def __init__(self, value: Union[int, float]) -> None:
-        self.value = value * 1024 ** self.pow
+        self.value = value * 1024**self.pow
 
     def __str__(self) -> str:
-        u_value = self.value / 1024 ** self.pow
+        u_value = self.value / 1024**self.pow
         zeros = count_zeros_after_decimal(u_value)
-        return f'{rounder(u_value):.{zeros}f} {self.label}'
+        return f"{rounder(u_value):.{zeros}f} {self.label}"
 
     @classmethod
-    def from_bytes(cls, value: Union[int, float]) -> 'Bytes':
+    def from_bytes(cls, value: Union[int, float]) -> "Bytes":
         instance = cls.__new__(cls)
         instance.value = value
         return instance
@@ -56,17 +59,20 @@ class Bytes:
 
 
 class Kilobytes(Bytes):
-    label = 'KB'
+    label = "KB"
     pow = 1
 
+
 class Megabytes(Bytes):
-    label = 'MB'
+    label = "MB"
     pow = 2
 
+
 class Gigabytes(Bytes):
-    label = 'GB'
+    label = "GB"
     pow = 3
 
+
 class Terabytes(Bytes):
-    label = 'TB'
+    label = "TB"
     pow = 4
