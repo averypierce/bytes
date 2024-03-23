@@ -48,31 +48,38 @@ def count_zeros_after_decimal_decimal(num: Union[int, float]) -> int:
 # Test data
 test_data = [0.0001, 0.01, 0.1, 0.00000001]
 
+# Number of iterations
+iterations = 100000
+
 # Time original function
 start_time = timeit.default_timer()
-for num in test_data:
-    count_zeros_after_decimal_original(num)
+for _ in range(iterations):
+    for num in test_data:
+        count_zeros_after_decimal_original(num)
 end_time = timeit.default_timer()
 print(f"Original function took {end_time - start_time} seconds")
 
 # Time refactored function
 start_time = timeit.default_timer()
-for num in test_data:
-    count_zeros_after_decimal_refactored(num)
+for _ in range(iterations):
+    for num in test_data:
+        count_zeros_after_decimal_refactored(num)
 end_time = timeit.default_timer()
 print(f"Refactored function took {end_time - start_time} seconds")
 
-# Time refactored function
+# Time decimal refactored function
 start_time = timeit.default_timer()
-for num in test_data:
-    count_zeros_after_decimal_refactored(num)
+for _ in range(iterations):
+    for num in test_data:
+        count_zeros_after_decimal_decimal(num)
 end_time = timeit.default_timer()
 print(f"Decimal Refactored function took {end_time - start_time} seconds")
 
 # Time numpy function
 start_time = timeit.default_timer()
-for num in test_data:
-    count_zeros_after_decimal_numpy(num)
+for _ in range(iterations):
+    for num in test_data:
+        count_zeros_after_decimal_numpy(num)
 end_time = timeit.default_timer()
 print(f"Numpy function took {end_time - start_time} seconds")
 
