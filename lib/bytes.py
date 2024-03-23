@@ -31,6 +31,15 @@ class Bytes:
         zeros = count_zeros_after_decimal(u_value)
         return f"{rounder(u_value):.{zeros}f} {self.label}"
 
+    def __repr__(self) -> str:
+        return f"{self.value} bytes"
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, Bytes) and self.value == other.value
+
+    def __lt__(self, other: object) -> bool:
+        return isinstance(other, Bytes) and self.value < other.value
+
     @classmethod
     def from_bytes(cls, value: Union[int, float]) -> "Bytes":
         instance = cls.__new__(cls)
