@@ -1,5 +1,3 @@
-import pytest
-import math
 from lib.bytes import (
     Bytes,
     Kilobytes,
