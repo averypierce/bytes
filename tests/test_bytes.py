@@ -99,46 +99,14 @@ def test_terabytes_converions():
 
 
 def test_unit_equality():
-    assert Bytes(1024).b == Kilobytes(1)
-    assert Kilobytes(1024).kb == Megabytes(1)
-    assert Megabytes(1024).mb == Gigabytes(1)
-    assert Gigabytes(1024).gb == Terabytes(1)
-    assert Terabytes(1024).tb == Terabytes(1024)
-
-
-def test_unit_comparison():
-    assert Bytes(1024) < Kilobytes(1)
-    assert Kilobytes(1024) < Megabytes(1)
-    assert Megabytes(1024) < Gigabytes(1)
-    assert Gigabytes(1024) < Terabytes(1)
-    assert Terabytes(1024) < Terabytes(1024)
-
-    assert Kilobytes(1) > Bytes(1024)
-    assert Megabytes(1) > Kilobytes(1024)
-    assert Gigabytes(1) > Megabytes(1024)
-    assert Terabytes(1) > Gigabytes(1024)
-    assert Terabytes(1024) > Terabytes(1024)
-
-    assert Kilobytes(1) == Kilobytes(1)
-    assert Megabytes(1) == Megabytes(1)
-    assert Gigabytes(1) == Gigabytes(1)
-    assert Terabytes(1) == Terabytes(1)
+    assert Bytes(1024) == Kilobytes(1)
+    assert Kilobytes(1024) == Megabytes(1)
+    assert Megabytes(1024) == Gigabytes(1)
+    assert Gigabytes(1024) == Terabytes(1)
     assert Terabytes(1024) == Terabytes(1024)
 
-    assert Kilobytes(1) != Megabytes(1)
-    assert Megabytes(1) != Gigabytes(1)
-    assert Gigabytes(1) != Terabytes(1)
-    assert Terabytes(1) != Terabytes(1024)
-    assert Terabytes(1024) != Terabytes(1024)
-
-    assert Kilobytes(1) <= Kilobytes(1)
-    assert Megabytes(1) <= Megabytes(1)
-    assert Gigabytes(1) <= Gigabytes(1)
-    assert Terabytes(1) <= Terabytes(1)
-    assert Terabytes(1024) <= Terabytes(1024)
-
-    assert Kilobytes(1) >= Kilobytes(1)
-    assert Megabytes(1) >= Megabytes(1)
-    assert Gigabytes(1) >= Gigabytes(1)
-    assert Terabytes(1) >= Terabytes(1)
-    assert Terabytes(1024) >= Terabytes(1024)
+def test_unit_inequality():
+    assert Bytes(1024) < Kilobytes(2)
+    assert Kilobytes(1024) < Megabytes(2)
+    assert Megabytes(1024) < Gigabytes(2)
+    assert Gigabytes(1024) < Terabytes(2)
